@@ -4,9 +4,10 @@
  "description": "Classification of insincere questions",
  "version": "1",
  "author": "Nina Caisova",
- "permissions": ["storage", "https://ttds.tech/"],
+ "permissions": ["storage", "https://ttds.tech/", "http://127.0.0.1:5000/", "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js","https://code.jquery.com/jquery-1.11.1.min.js"],
+"content_security_policy": "script-src 'self' https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js 'unsafe-eval'; object-src 'self'",
 "browser_action": {
-   "default_icon": "logo.png",
+   "default_icon": "icon.png",
    "default_title": "Classification of insincere questions",
    "default_popup": "newtab.html"
  }
