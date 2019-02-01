@@ -1,0 +1,13 @@
+{
+ "manifest_version": 2,
+ "name": "Classification",
+ "description": "Classification of insincere questions",
+ "version": "1",
+ "author": "Nina Caisova",
+ "permissions": ["storage", "https://ttds.tech/"],
+"browser_action": {
+   "default_icon": "logo.png",
+   "default_title": "Classification of insincere questions",
+   "default_popup": "newtab.html"
+ }
+}
