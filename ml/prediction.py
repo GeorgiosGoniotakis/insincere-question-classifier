@@ -5,8 +5,10 @@ from ml.utils.vectorizer import build_TF
 from ml.utils.definitions import *
 
 from keras.models import load_model
+from keras.preprocessing import sequence
 
 import pandas as pd
+import numpy as np
 
 
 def predict(s, model):
@@ -18,10 +20,11 @@ def predict(s, model):
         predict("Wine is red", "log")
         predict("Wine is red", "mlp")
         predict("Wine is red", "ada")
+        predict("Wine is red", "lstm")
 
     Args:
         s: Input string
-        model: Model used to predict (svm, log, mlp, ada)
+        model: Model used to predict (svm, log, mlp, ada, lstm)
 
     Returns:
             0: Sincere
@@ -41,6 +44,9 @@ def predict(s, model):
         model_file = MLP_MODEL
     elif model == "ada":
         model_file = ADA_MODEL
+    elif model == "lstm":
+        model_file = LSTM_MODEL
+
 
     # Make sure model_file is not empty
     assert model_file
@@ -65,4 +71,16 @@ def predict(s, model):
         except Exception as ex:
             print("Problem accessing model file. Reason: {}".format(str(ex)))
     elif library == "keras":
-        model = load_model(model_file)
+        try:
+            with open(LSTM_TOKENIZER, 'rb') as tok:
+                tokenizer = pickle.load(tok)
+                df_train = tokenizer.texts_to_sequences([preprocess_data(s)])
+                df_train = sequence.pad_sequences(df_train, maxlen=MAX_WORDS)
+                model = load_model(LSTM_MODEL)
+                return (np.array(model.predict(df_train)) > 0.5).astype(np.int)[0][0]
+        except Exception as ex:
+            print("Problem accessing Keras model. Reason: {}".format(str(ex)))
+
+
+# Test string, uncomment to check result
+print(predict("How do I work in cyber security overseas?", "lstm"))
