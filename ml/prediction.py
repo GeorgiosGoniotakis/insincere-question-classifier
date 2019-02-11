@@ -17,10 +17,11 @@ def predict(s, model):
         predict("Wine is red", "svm")
         predict("Wine is red", "log")
         predict("Wine is red", "mlp")
+        predict("Wine is red", "ada")
 
     Args:
         s: Input string
-        model: Model used to predict (svm, log, mlp)
+        model: Model used to predict (svm, log, mlp, ada)
 
     Returns:
             0: Sincere
@@ -38,6 +39,8 @@ def predict(s, model):
         model_file = LOG_MODEL
     elif model == "mlp":
         model_file = MLP_MODEL
+    elif model == "ada":
+        model_file = ADA_MODEL
 
     # Make sure model_file is not empty
     assert model_file
