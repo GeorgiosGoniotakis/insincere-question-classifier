@@ -1,3 +1,5 @@
+import re
+
 from nltk.corpus import stopwords
 from nltk.stem import SnowballStemmer
 
@@ -9,7 +11,7 @@ def to_lower(s):
 
 def rem_punct(s):
     """Removes the punctuation from a given string."""
-    return s.replace('[^\w\s]', '')
+    return re.sub(r'[^\w\s]', '', s)
 
 
 def rem_digits(s):
