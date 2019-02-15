@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Classification</title>
+      <style>
+	body {
+	  width: 600px;
+  	  height: 300px;
+        }
+      </style>
+      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  </head>
+  <body>
+    <h3 align="center">Input a question for classification</h3>
+	<div class="col-xs-9">
+ 	    <input id="question" type="text" class="form-control" name="criteria" required data-fv-notempty-message="This field must be filled" />
+            <label class="radio-inline"><input type="radio" name="search" value="lstm" checked='checked' />lstm</label>
+            <label class="radio-inline"><input type="radio" name="search" value="svm"/>svm</label>
+            <label class="radio-inline"><input type="radio" name="search" value="log" />log</label>
+            <label class="radio-inline"><input type="radio" name="search" value="mlp" />mlp</label>
+            <label class="radio-inline"><input type="radio" name="search" value="ada" />ada</label>
+	</div>
+	<button id="submitQuestion" type="submit" class="btn btn-success" data-toggle="#jobInfo">Classify</button>
+
+            <div class="row" style="margin-top:50px;">
+                <div class="panel panel-default" style="margin-bottom:0px; padding-left:10px;">
+                    <div class="panel-heading"><p id="input-text"><b>Question</b>:</p> <p id="input-model"><b>Model:</b></p> </div>
+                    <div class="panel-body">
+			<p id="result"><b>Result</b>:  </p>
+		    </div>
+		</div>
+	    </div>
+      <script src="script.js"></script>
+
+
+
+
+  <div class="row">
+        <div class="panel panel-default" style="margin-bottom:0px; padding-left:10px;">
+            <div class="panel-heading">Below are some <b>sample questions</b> that can be used to test the classifier and the chrome extension:</div>
+            <div class="panel-body">
+              <ul>
+                <li><font color='red'>[Insincere]</font> Do the Chinese eat all the primates?</li>
+                <li><font color='red'>[Insincere]</font> Is Trump a penis?</li>
+                <li><font color='green'>[Sincere]</font> Is Quora legit?</li>
+                <li><font color='red'>[Insincere]</font> Why are all men bastards?</li>
+                <li><font color='red'>[Insincere]</font> Was AIDS a punishment from God for gay people?</li>
+                <li><font color='green'>[Sincere]</font> Why does velocity affect time?</li>
+                <li><font color='green'>[Sincere]</font> How do I work in cyber security overseas?</li>
+              </ul>
+	      <p style="font-size:small; padding-top:32px;">*Please note this extension is part of a project based on a Kaggle competition entitled Insincere Question Classification.
+		To find out more about the project please visit our website at ttds.tech</p>
+            </div>
+        </div>
+    </div>
+  </body>
+</html> 
+
